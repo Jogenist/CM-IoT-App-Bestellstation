@@ -22,20 +22,19 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
     <meta name="cocktail" content="example, html, head, meta">
     
     <link rel="shortcut icon" href="image/favico.ico" type="image/x-icon">
-	<link rel="icon" href="image/favico.ico" type="image/x-icon">
+	  <link rel="icon" href="image/favico.ico" type="image/x-icon">
     <title>MixHit Order</title>
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	  <!-- Bootstrap core CSS -->
+	  <link rel="stylesheet" href="css/bootstrap.min.css">
 	
-	<!-- Custom styles for this template -->
+	  <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/design.css">
-
-	</head>
+</head>
 
 	<body id="page-top">
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">		
-            <div class="container">
+        <div class="container">
 				<img class="logo_image" src="image/hska_logo.png">
                 <a class="navbar-brand" href="/">Hochschule Karlsruhe - MixHit</a>
                 <button
@@ -46,7 +45,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                     aria-controls="navbarResponsive"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
-                >
+                    >
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -60,7 +59,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         </li>
                     </ul>
                 </div>
-            </div>
+        </div>
         </nav>
 
         <header class="text-white">
@@ -77,7 +76,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                     <div class="col-lg-8 mx-auto">
                         <h2>Custom Cocktails</h2>
                         <p class="lead">Define the parameters and click save</p>
-						<form action="/" method="post" enctype="multipart/form-data">
+						<!--form action="/" method="get" enctype="multipart/form-data"-->
 							<!--div class="form-check">
 								<input
 									class="form-check-input"
@@ -393,29 +392,21 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
              
 
 							<div>
-              <button id ="0001020304050607" class="btn btn-danger" data-modal-target=#modalcustom> 220 ml</button>
+              <button id ="0001020304050607" class="btn btn-danger" data-modal-target=#modalalc> 220 ml</button>
               </div>
               
               <!--button onclick="ClearCustomValues()">SAUWA</button-->
               <input type="button" name="ButtonClear" value="SAUWA" onclick="ClearCustomValues()"/>
-              <input type="submit" value="Save" name="save">
-						</form>
+              <!--input type="submit" value="Save" name="save"-->
+					  <!--/form-->
 
 
 
 )=====" };
 
 
-
-
-
-
-const char CUSTOM_page_After[] PROGMEM{ R"=====(
-		</div>
-                </div>
-            </div>
-        </section>
-                <div class="modalalc" id="modalalc">
+const char CUSTOM_page_AfterFooter_BeforeScript[] PROGMEM{ R"=====(
+            <div class="modalalc" id="modalalc">
               <div class="modalalc-header h4">
                 <div class="title">Ihre Bestellung</div>
                   <button data-close-button class="close-button">&times;</button>
@@ -432,18 +423,6 @@ const char CUSTOM_page_After[] PROGMEM{ R"=====(
                 <button data-close-button class="close-button">&times;</button>
               </div>
               <div class="modalnonalc-body h5">
-                <strong>Ihre Bestellung wird gebucht.</strong><br />
-                <em>Stellen Sie das Glas auf das Terminal.</em>
-              </div>
-            </div>
-
-             //cs:0402 -> modalcustom
-            <div class="modalcustom" id="modalcustom">
-              <div class="modalcustom-header h4">
-                <div class="title">Ihre Bestellung</div>
-                <button data-close-button class="close-button">&times;</button>
-              </div>
-              <div class="modalcustom-body h5">
                 <strong>Ihre Bestellung wird gebucht.</strong><br />
                 <em>Stellen Sie das Glas auf das Terminal.</em>
               </div>
@@ -477,20 +456,31 @@ const char CUSTOM_page_After[] PROGMEM{ R"=====(
             <div class="h4"> <p id="return"></p></div>
           </div>
         </div>
-		<!-- Footer -->
-        <footer class="py-2">
-            <div class="container">
-                <div id="left">Copyright &copy; Your Website 2019</div>
-                <div id="right">
-                    <!--button class="btn btn-success" data-modal-target="#save">
-                        Save Settings
-                    </button-->
-                </div>
-            </div>
-            <!-- /.container -->
-        </footer>
-		<script>
-		</script>
-	</body>
+      <div id="overlay"></div>
+      <!-- Footer -->
+      <footer class="py-2">
+        <div class="container">
+          <div id="left">Copyright &copy; Your Website 2019</div>
+          <div id="center">
+            Price:
+            <strong><em id="display"></em><em>&euro;</em></strong>
+          </div>
+          <div id="right">
+            <button class="btn btn-success" data-modal-target="#total1">
+              Total
+            </button>
+          </div>
+        </div>
+        <!-- /.container -->
+      </footer>
+      <script>
+)=====" };
+
+
+
+
+const char CUSTOM_page_AfterFooter_AfterScript[] PROGMEM{ R"=====(
+      </script>     
+    </body>
 </html>
 )=====" };

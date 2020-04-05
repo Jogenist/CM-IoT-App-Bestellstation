@@ -24,7 +24,7 @@ std::string dynamic_content_alc()
    
     lIngredients+= Zutaten_alk_statisch[i];
 		HTML_AlcoholicList += "<td><em>" + lIngredients + "</em></td>\n";
-    HTML_AlcoholicList += "<td style=\"text-align:center;\"><button id =\""+String(Cocktails[i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalcustom>" + String(220) + "ml</button></td>\n";
+    HTML_AlcoholicList += "<td style=\"text-align:center;\"><button id =\""+String(Cocktails[i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalalc>" + String(220) + "ml</button></td>\n";
 		HTML_AlcoholicList += "</tr>\n";
 
 	}

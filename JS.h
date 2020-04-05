@@ -63,13 +63,6 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
                 });
             });
 
-            overlay.addEventListener("click", () => {
-                const modals = document.querySelectorAll(".modalcustom.active");  //cs:0402
-                modals.forEach(modal => {
-                    closeModal(modal);
-                });
-            });
-
             closeModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
                     const modal = button.closest(".modalalc");
@@ -80,13 +73,6 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
             closeModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
                     const modal = button.closest(".modalnonalc");
-                    closeModal(modal);
-                });
-            });
-
-            closeModalButtons.forEach(button => {
-                button.addEventListener("click", () => {
-                    const modal = button.closest(".modalcustom"); //cs:0402
                     closeModal(modal);
                 });
             });
@@ -155,31 +141,6 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
           					}
           					
           					document.getElementById("display").innerHTML = total_price;
-                              
-                    setTimeout(function() {closeModal(modal);}, 3000);
-                 } 
-
-                 else if (modal.classList.contains("modalcustom"))  //cs:0402 -> den ganzen ese 'if block' hinzugefügt
-                {
-                    IsAlc = false;  //cs:0402 -> stimte eigentlich nicht 
-                    let response = fetch ('/Bestellung',{
-                        method:  'POST',
-                        headers:  {
-                        'Content-Type': 'text/plain'
-                        },
-                        body:  Cocktail
-                        });
-                    count_custom++;
-                   if ( with_deposit == true)
-                    {
-                      total_price = count_alc * price_alc + count_alc * 5 + count_nonalc * price_nonalc + count_nonalc * 5 + count_custom * price_custom + count_custom *5;
-                    }
-                    else
-                    {
-                      total_price = count_alc * price_alc + count_nonalc * price_nonalc + coutn_custom * price_custom;
-                    }
-                    
-                    document.getElementById("display").innerHTML = total_price;
                               
                     setTimeout(function() {closeModal(modal);}, 3000);
                  } 

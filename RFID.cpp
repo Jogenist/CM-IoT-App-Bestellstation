@@ -128,6 +128,7 @@ RFIDerrorcode RFID_Card::writeOrder(const char* Order, int Size)
 	return RFID_OK;
 }
 //-------------------------------------------------------------------------------------------- jg0402
+/*
 RFIDerrorcode RFID_Card::writeCustomOrder(const char* Order, int Size)
 {
   byte Buffer[32];
@@ -149,7 +150,7 @@ RFIDerrorcode RFID_Card::writeCustomOrder(const char* Order, int Size)
   }
   return RFID_OK;
 }
-
+*/
 
 
 RFIDerrorcode RFID_Card::readOrder(char* Cocktail, int size, byte& Status)

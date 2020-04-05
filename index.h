@@ -79,23 +79,26 @@ const char MAIN_page_Begin[] PROGMEM{ R"=====(
                                 class="nav-link js-scroll-trigger"
                                 href="/settings"
                                 >Settings</a
-                               
                             >
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a
-
-
-
                                 class="nav-link js-scroll-trigger"
-                                href="/Leertrinbetrieb"
+                                href="/Leertrinkbetrieb"
                                 >Leertrinkbetrieb</a
                             >
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-
-               <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a
@@ -214,18 +217,6 @@ const char MAIN_page_AfterFooter_BeforeScript[] PROGMEM{ R"=====(
 								<em>Stellen Sie das Glas auf das Terminal.</em>
 							</div>
 						</div>
-
-             //cs:0402 -> madalcustom
-            <div class="modalcustom" id="modalcustom">
-              <div class="modalcustom-header h4">
-                <div class="title">Ihre Bestellung</div>
-                <button data-close-button class="close-button">&times;</button>
-              </div>
-              <div class="modalcustom-body h5">
-                <strong>Ihre Bestellung wird gebucht.</strong><br />
-                <em>Stellen Sie das Glas auf das Terminal.</em>
-              </div>
-            </div>
 
 						<div class="total1" id="total1">
 							<div class="total-header1 h4">

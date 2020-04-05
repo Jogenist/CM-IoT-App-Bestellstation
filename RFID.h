@@ -106,7 +106,7 @@ public:
 
 	RFIDerrorcode writeOrder(const char* Order, int Size);
 
-  RFIDerrorcode writeCustomOrder(const char* Order, int Size);
+  //RFIDerrorcode writeCustomOrder(const char* Order, int Size);
 
 	RFIDerrorcode readOrder(char* Order,int size, byte& Status); //
 
