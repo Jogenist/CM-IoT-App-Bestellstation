@@ -11,5 +11,5 @@ Last change: 20200403; 11:34:38
 
 string dynamic_content_CustomCocktails()
 {
-	
+
 }

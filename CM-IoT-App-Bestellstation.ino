@@ -344,7 +344,7 @@ void setup() {
     Serial.print("IP address: ");
     Serial.println(IP);
   }
-  
+
   
   //htm_head.append(HTML_Head);
   //Answer request for index page
@@ -361,8 +361,8 @@ void setup() {
     request->send_P(200, "text/html", index_html.c_str(), processor);
     });
 
-  
-  server.on("/Bestellung", HTTP_POST,     //https://techtutorialsx.com/2017/12/01/esp32-arduino-asynchronous-http-webserver/
+
+  server.on("/Bestellung", HTTP_POST,
     [](AsyncWebServerRequest* request) {},
     NULL,
     [](AsyncWebServerRequest* request, uint8_t* data, size_t len, size_t index, size_t total) {
@@ -372,7 +372,7 @@ void setup() {
         myCocktail[i] = data[i];
         Serial.print(myCocktail[i]);
      }
-     for(size_t i =len; i<32; i++) //füllt den Rest mit 0
+     for(size_t i =len; i<32; i++)
      {
         myCocktail[i] = 0;
      }
@@ -384,10 +384,15 @@ void setup() {
    xSemaphoreGive(xRFIDSemaphore);
    request->send(200);
     });
-//------------------------------------------------------------------------------------------------------ jg0402
-  
+  //Favicon
+  server.on("/image/favico.ico", HTTP_GET, [](AsyncWebServerRequest* request) {
+    request->send(SPIFFS, "/favico.ico", "image/x-icon");
+    });
 
-//------------------------------------------------------------------------------------------------------ 
+  //Logo
+  server.on("/image/hska_logo.png", HTTP_GET, [](AsyncWebServerRequest* request) {
+    request->send(SPIFFS, "/hska_logo.png", "image/png");
+  });
 
   //Answer request for index page
   settings_html.append(SETTINGS_page_Begin);
@@ -396,41 +401,18 @@ void setup() {
     request->send(200, "text/html", settings_html.c_str());
     });
 
-     //Answer request for index page
+  //Answer request for custom page
   custom_html.append(CUSTOM_page_Begin);
-  custom_html.append(CUSTOM_page_After);
+  custom_html.append(CUSTOM_page_AfterFooter_BeforeScript);
+  //custom_html.append(JAVASCRIPT_static);
+  custom_html.append(CUSTOM_page_AfterFooter_AfterScript);
   server.on("/custom", HTTP_GET, [](AsyncWebServerRequest* request) {
     request->send(200, "text/html", custom_html.c_str());
     });
 
-   //Answer request for index page
-  Leertrinkbetrieb_html.append(LEERTRINKBETRIEB_page_Begin);
-  Leertrinkbetrieb_html.append(LEERTRINKBETRIEB_page_After);
-  server.on("/Leertrinkbetrieb", HTTP_GET, [](AsyncWebServerRequest* request) {
-    request->send(200, "text/html", settings_html.c_str());
-    });
-
-
-//Receive post from CuCo site
-   server.on("/", HTTP_POST, [](AsyncWebServerRequest* request) {
-    int params = request->params();
-    for (int i = 0;i < params;i++) {
-      AsyncWebParameter* p = request->getParam(i);
-      Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
-      myCustomCocktail[i] = const_cast<char*> (p->value().c_str());
-    } // for(int i=0;i<params;i++)
-    request->send(200);
-    }); // server.on
-  /*
-  server.on("/settings", HTTP_POST, [](AsyncWebServerRequest* request) {
-    request->send(200, "text/plain", "Post route");
-    });
-
-
 
   //Receive post from settings site
-  /*
-   server.on("/", HTTP_POST, [](AsyncWebServerRequest* request) {
+  server.on("/", HTTP_POST, [](AsyncWebServerRequest* request) {
     int params = request->params();
     for (int i = 0;i < params;i++) {
       AsyncWebParameter* p = request->getParam(i);
@@ -489,13 +471,11 @@ void setup() {
 
     request->send(200, "text/html", index_html.c_str());
     }); // server.on
-  */
   /*
   server.on("/settings", HTTP_POST, [](AsyncWebServerRequest* request) {
     request->send(200, "text/plain", "Post route");
     });
   */
-  
 
   // Route to load style.css file
   server.on("/css/design.css", HTTP_GET, [](AsyncWebServerRequest* request) {
