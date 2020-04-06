@@ -24,7 +24,7 @@ std::string dynamic_content_alc()
    
     lIngredients+= Zutaten_alk_statisch[i];
 		HTML_AlcoholicList += "<td><em>" + lIngredients + "</em></td>\n";
-    HTML_AlcoholicList += "<td style=\"text-align:center;\"><button id =\""+String(Cocktails[i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalalc>" + String(220) + "ml</button></td>\n";
+    HTML_AlcoholicList += "<td style=\"text-align:center;\"><button id=\"OrderButton\" name =\""+String(Cocktails[i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalalc>" + String(220) + "ml</button></td>\n";
 		HTML_AlcoholicList += "</tr>\n";
 
 	}
@@ -43,7 +43,7 @@ std::string dynamic_content_nonalc()
    
     lIngredients += Zutaten_antialk_statisch[i]; 
 		HTML_NonAlcoholicList += "<td><em>" + lIngredients + "</em></td>\n";
-    HTML_NonAlcoholicList += "<td style=\"text-align:center;\"><button id =\""+String(Cocktails[12+i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalnonalc>" + String(220) + "ml</button></td>\n";
+    HTML_NonAlcoholicList += "<td style=\"text-align:center;\"><button id=\"OrderButton\" name =\""+String(Cocktails[12+i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalnonalc>" + String(220) + "ml</button></td>\n";
 		//HTML_AlcoholicList += "<td><a href='/Bestellung_Alkoholisch_Gross/" + String(i) + "' class='btn btn-primary btn-block'><" + fontSizeText + ">" + String(gCocktailMixer.mGlasses.getBigAmount()) + "ml</font></a></td>";
 		HTML_NonAlcoholicList += "</tr>\n";
 

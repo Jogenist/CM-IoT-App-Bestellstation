@@ -163,7 +163,7 @@ footer {
     box-sizing: border-box;
 }
 
-.modalalc, .modalnonalc{
+.modalalc, .modalnonalc {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -177,12 +177,10 @@ footer {
     max-width: 80%;
 }
 
-//cs:0402 -> .modalcustom
 .modalalc.active,  .modalnonalc.active{
     transform: translate(-50%, -50%) scale(1);
 }
 
-//cs:0402 -> .modalcustom
 .modalalc-header, .modalnonalc-header {
     padding: 10px 15px;
     display: flex;
@@ -191,13 +189,12 @@ footer {
     border-bottom: 1px solid black;
 }
 
-//cs:0402 -> .modalcustom
 .modalalc-header .title, .modalnonalc-header .title {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-//cs:0402 -> .modalcustom
+
 .modalalc-header .close-button,  .modalnonalc-header .close-button{
     cursor: pointer;
     border: none;
@@ -207,7 +204,6 @@ footer {
     font-weight: bold;
 }
 
-//cs:0402 -> .modalcustom-body
 .modalalc-body, .modalnonalc-body {
     padding: 10px 15px;
 }

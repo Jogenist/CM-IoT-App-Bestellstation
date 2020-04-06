@@ -20,12 +20,10 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 			var with_deposit = %PLACEHOLDER_DEPOSIT%;
 			var price_alc = %PLACEHOLDER_PRICE_ALC%;
 			var price_nonalc = %PLACEHOLDER_PRICE_NONALC%;
-      var price_custom = %PLACEHOLDER_PRICE_CUSTOM% //cs:0402
 			
 			var count_alc = 0;
-      var count_nonalc = 0;
-      var count_custom = 0; //cs:0402
-      var paid = "";
+            var count_nonalc = 0;
+            var paid = "";
 			var total_price = 0;
 
             let Cocktail;
@@ -41,7 +39,7 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 
             openModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
-                    Cocktail = button.id;
+                    Cocktail = button.name;
                     const modal = document.querySelector(
                         button.dataset.modalTarget
                     );
@@ -77,23 +75,19 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
                 });
             });
 
-            function closeModal(modal)
-            {
+            function closeModal(modal) {
                 if (modal == null) return;
                 modal.classList.remove("active");
                 overlay.classList.remove("active");
             }
 
-            //-----------  Open Modal ----------------------------------------------------------------------------------
-            function openModal(modal) 
-            {
+            function openModal(modal) {
                 if (modal == null) return;
 
                 console.log(modal.className);
                 modal.classList.add("active");
                 overlay.classList.add("active");
-                if (modal.classList.contains("modalalc")) 
-                {
+                if (modal.classList.contains("modalalc")) {
                     IsAlc = true;
                     let response = fetch ('/Bestellung',{
                         method:  'POST',
@@ -103,25 +97,26 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
                         body:  Cocktail
                         });
                     count_alc++;
-                    
-                					if ( with_deposit == true)
-                					{
-                            total_price = count_alc * price_alc + count_alc * 5 + count_nonalc * price_nonalc + count_nonalc * 5 + count_custom * price_custom + count_custom *5;
-                					}
-                         
-                					else
-                					{
-                						total_price = count_alc * price_alc + count_nonalc * price_nonalc + coutn_custom * price_custom;
-                					}
-                         
-                					document.getElementById("display").innerHTML = total_price;
-          
-                              setTimeout(function() {closeModal(modal);}, 3000);
-                              
-                } //Ende "if modalalc"
-                
-                else if (modal.classList.contains("modalnonalc"))
-                {
+					if ( with_deposit == true)
+					{
+                    total_price =
+                        count_alc * price_alc +
+                        count_alc * 5 +
+                        count_nonalc * price_nonalc +
+                        count_nonalc * 5;
+					}
+					else
+					{
+						total_price =
+                        count_alc * price_alc +
+                        count_nonalc * price_nonalc;
+					}
+					document.getElementById("display").innerHTML = total_price;
+
+                    setTimeout(function() {
+                        closeModal(modal);
+                    }, 3000);
+                } else if (modal.classList.contains("modalnonalc")) {
                     IsAlc = false;
                     let response = fetch ('/Bestellung',{
                         method:  'POST',
@@ -131,28 +126,30 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
                         body:  Cocktail
                         });
                     count_nonalc++;
-          					if ( with_deposit == true)
-          					{
-                      total_price = count_alc * price_alc + count_alc * 5 + count_nonalc * price_nonalc + count_nonalc * 5 + count_custom * price_custom + count_custom *5;
-          					}
-          					else
-          					{
-          						total_price = count_alc * price_alc + count_nonalc * price_nonalc + coutn_custom * price_custom;
-          					}
-          					
-          					document.getElementById("display").innerHTML = total_price;
-                              
-                    setTimeout(function() {closeModal(modal);}, 3000);
-                 } 
-                 
-                 else 
-                 {
-                  calculatePrice();
-                  paid = document.querySelector("#paid").value;
-                 }
-            } //Ende openModal
-            //-----------  Open Modal ----------------------------------------------------------------------------------
-  
+					if ( with_deposit == true)
+					{
+                    total_price =
+                        count_alc * price_alc +
+                        count_alc * 5 +
+                        count_nonalc * price_nonalc +
+                        count_nonalc * 5;
+					}
+					else
+					{
+						total_price =
+                        count_alc * price_alc +
+                        count_nonalc * price_nonalc;
+					}
+					document.getElementById("display").innerHTML = total_price;
+                    setTimeout(function() {
+                        closeModal(modal);
+                    }, 3000);
+                } else {
+                    calculatePrice();
+                    paid = document.querySelector("#paid").value;
+                }
+            }
+
             function calculatePrice() {
 				if ( with_deposit == true)
 				{

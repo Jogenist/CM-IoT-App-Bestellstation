@@ -394,7 +394,7 @@ void setup() {
     request->send(SPIFFS, "/hska_logo.png", "image/png");
   });
 
-  //Answer request for index page
+  //Answer request for settings page
   settings_html.append(SETTINGS_page_Begin);
   settings_html.append(SETTINGS_page_After);
   server.on("/settings", HTTP_GET, [](AsyncWebServerRequest* request) {
@@ -404,10 +404,11 @@ void setup() {
   //Answer request for custom page
   custom_html.append(CUSTOM_page_Begin);
   custom_html.append(CUSTOM_page_AfterFooter_BeforeScript);
-  //custom_html.append(JAVASCRIPT_static);
+  custom_html.append(JAVASCRIPT_static);
   custom_html.append(CUSTOM_page_AfterFooter_AfterScript);
-  server.on("/custom", HTTP_GET, [](AsyncWebServerRequest* request) {
-    request->send(200, "text/html", custom_html.c_str());
+  server.on("/custom", HTTP_GET, [](AsyncWebServerRequest* request) { 
+  AsyncWebServerResponse *response = request->beginResponse(200);
+    request->send_P(200, "text/html", custom_html.c_str(), processor);
     });
 
 
