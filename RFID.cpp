@@ -13,7 +13,7 @@ const char Success[] = " ORDER  OKAY! ";
 // Cocktails definition
 
 const char* Cocktails[] = { "Wodka-Maracuja","Malibu-Maracuja","Malibu-Orange","Malibu-Sunrise","Screwdriver", // Alc cocktails
-"Tropic-Thunder","Mix-Mimi","Pink-Pussycat","Mix-Safari","San-Francisco","The-Waikiki","Mix-Brassmonkey", "DuLutscher", // Alc cocktails
+"Tropic-Thunder","Mix-Mimi","Pink-Pussycat","Mix-Safari","San-Francisco","The-Waikiki","Mix-Brassmonkey",  // Alc cocktails
 "Maracuja","Orange","Taifruitpunch","Tropic-Sunrise","Lemon-Cocktail","Mix-Sixteen",   // non alc cocktails
 "Mix-Redone","Mix-Planterswonder","Mix-Targa","Bananajack","Bora-Bora","Drachenblut","Mix-Kiba","Luckydriver","Ananas-Orange", // non alc cocktails
 "Babouin","Ballerina","Cinderella","Mix-Sweetvictory","Mix-Sweety","Tropic-Star","Tropical-Orange" }; // non alc cocktails
@@ -21,7 +21,7 @@ const char* Cocktails[] = { "Wodka-Maracuja","Malibu-Maracuja","Malibu-Orange","
 
 const char* Zutaten_alk_statisch[]={"Wodka, Maracuja","Malibu, Maracuja","Malibu, Orange","Malibu, Grenadine, Orange","Wodka, Orange",
                                     "Wodka, Malibu, Maracuja","Wodka, Malibu, Ananas","Wodka, Grenadine, Ananas","Wodka, Zitrone",
-                                    "Wodka, Maracuja, Ananas, Zitrone, Grenadine, Orange, Banane","Wodka, Ananas","Wodka, Orange(anderes Verhältnis)", "DuLutscher"};
+                                    "Wodka, Maracuja, Ananas, Zitrone, Grenadine, Orange, Banane","Wodka, Ananas","Wodka, Orange(anderes Verhältnis)"};
 
 const char*Zutaten_antialk_statisch[]={"Maracuja","Orange","Maracuja, Orange, Ananas, Zitrone, Grenadine","Banane, Ananas, Maracuja, Grenadine",
                                       "Zitrone, Orange", "Grenadine, Zitrone, Orangen, Maracuja, Ananas","Zitrone, Grenadine, Orangensaft, Ananas","Zitrone, Grenadine, Orange, Maracuja, Ananas",
@@ -127,31 +127,6 @@ RFIDerrorcode RFID_Card::writeOrder(const char* Order, int Size)
 #endif  // DEBUG_RFID
 	return RFID_OK;
 }
-//-------------------------------------------------------------------------------------------- jg0402
-/*
-RFIDerrorcode RFID_Card::writeCustomOrder(const char* Order, int Size)
-{
-  byte Buffer[32];
-  memset(Buffer, 0, 32);
-  memcpy(Buffer,Order,Size);
-  if (!Sensor.writeBlock(CUSTOMCOCKTAILNAME, Buffer, 16))
-  {
-    return RFID_FWRITECARD;
-    }
-  if (!Sensor.writeBlock(CUSTOMCOCKTAILNAME+1, &Buffer[16], 16))
-  {
-    return RFID_FWRITECARD;
-  }
-  byte CheckBuffer[32];
-  memset(CheckBuffer, 0, 16);
-  if (writeCocktailStatus(BESTELLT)!=RFID_OK)  // write an other block for order success writing
-  {
-    return RFID_FWRITECARD;
-  }
-  return RFID_OK;
-}
-*/
-
 
 RFIDerrorcode RFID_Card::readOrder(char* Cocktail, int size, byte& Status)
 {
