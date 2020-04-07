@@ -1,8 +1,8 @@
 /*
-Type:		HTML Index Page
-Date:		14.08.2019
-Author:		Tim Schanz
-Description:	This header file stores the static HTML content of the configuration page.
+Type:    HTML Index Page
+Date:   14.08.2019
+Author:   Tim Schanz
+Description:  This header file stores the static HTML content of the ordering main page.
 */
 
 #include <Arduino.h>
@@ -10,8 +10,30 @@ Description:	This header file stores the static HTML content of the configuratio
 using namespace std;
 
 string dynamic_content_CustomCocktails();
-//string Customstring = "0001020304050607";  //cs:0402
 
+/*
+const char HTML_Head[] PROGMEM{ R"=====(
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="Cocktail orderingpage" content="This site provides all purchaseable cocktails">
+    <meta name="cocktail" content="example, html, head, meta">
+    
+    <link rel="shortcut icon" href="image/favico.ico" type="image/x-icon">
+  <link rel="icon" href="image/favico.ico" type="image/x-icon">
+    <title>MixHit Order</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/design.css">
+  <?php
+   header("refresh: 0;");
+  ?>
+  </head>
+
+)=====" };*/
 const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
 
 <!DOCTYPE html>
@@ -22,20 +44,22 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
     <meta name="cocktail" content="example, html, head, meta">
     
     <link rel="shortcut icon" href="image/favico.ico" type="image/x-icon">
-	  <link rel="icon" href="image/favico.ico" type="image/x-icon">
+  <link rel="icon" href="image/favico.ico" type="image/x-icon">
     <title>MixHit Order</title>
-	  <!-- Bootstrap core CSS -->
-	  <link rel="stylesheet" href="css/bootstrap.min.css">
-	
-	  <!-- Custom styles for this template -->
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/design.css">
-</head>
-
-	<body id="page-top">
+  <?php
+   header("refresh: 3;");
+  ?>
+  </head>
+  <body id="page-top">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">		
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">    
         <div class="container">
-				<img class="logo_image" src="image/hska_logo.png">
+        <img class="logo_image" src="image/hska_logo.png">
                 <a class="navbar-brand" href="/">Hochschule Karlsruhe - MixHit</a>
                 <button
                     class="navbar-toggler"
@@ -66,43 +90,17 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
             <div class="container text-center">
                 <h1>CocktailMaker Ordering Terminal</h1>
                 <p class="lead">
-                    Customize your own Cocktail!
+                    Get your freshening gulp!!!
                 </p>
             </div>
         </header>
-		<section id="CustomCocktails" class="bg-light">
+
+        <section id="CustomCocktails">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <h2>Custom Cocktails</h2>
-                        <p class="lead">Define the parameters and click save</p>
-						<!--form action="/" method="get" enctype="multipart/form-data"-->
-							<!--div class="form-check">
-								<input
-									class="form-check-input"
-									type="radio"
-									name="deposit_radios"
-									id="deposit"
-									value="deposit"
-									checked
-								>
-								<label class="form-check-label" for="deposit">
-									Pfand
-								</label>
-							</div-->
-							<!--div class="form-check">
-								<input
-									class="form-check-input"
-									type="radio"
-									name="deposit_radios"
-									id="nodeposit"
-									value="nodeposit"
-								>
-								<label class="form-check-label" for="nodeposit">
-									Kein Pfand
-								</label>
-							</div-->
-
+                        <h2>Alkoholische Cocktails</h2>
+                        <p class="lead">Choose your drink!!!</p>
                   <div>
                   Wodka
                   </div>
@@ -212,6 +210,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementById("Orange_insert").value = Orange_ml;
                   document.getElementById("Grenadine_insert").value = Grenadine_ml;
                   document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
+                  document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                  //var x = document.getElementsByClassName("btn btn-danger")[0].name;
+                  //document.getElementById("All_insert").innerHTML = x;
 
                    function ClearCustomValues()
                    {
@@ -234,6 +235,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementById("Orange_insert").value = Orange_ml;
                   document.getElementById("Grenadine_insert").value = Grenadine_ml;
                   document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
+                  document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                  //var x = document.getElementsByClassName("btn btn-danger")[0].name;
+                  //document.getElementById("All_insert").innerHTML = x;
                    }
                   
                   function myFunctionInc(p1) 
@@ -304,6 +308,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         }
                         
                         document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
+                        document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                        //var x = document.getElementsByClassName("btn btn-danger")[0].name;
+                        //document.getElementById("All_insert").innerHTML = x;
                   }
                   
                   function myFunctionDec(p1) {
@@ -386,26 +393,29 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         }
                         
                         document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
+                        document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                        //var x = document.getElementsByClassName("btn btn-danger")[0].name;
+                        //document.getElementById("All_insert").innerHTML = x;
+                        
                          }
                                   
                   </script>
              
-
-							<div>
-              <button id ="0001020304050607" class="btn btn-danger" data-modal-target=#modalalc> 220 ml</button>
+              <div>
+              <button name = "0000000000000000" id ="OrderButton" class="btn btn-danger" data-modal-target=#modalalc>Order</button>
               </div>
-              
-              <!--button onclick="ClearCustomValues()">SAUWA</button-->
               <input type="button" name="ButtonClear" value="SAUWA" onclick="ClearCustomValues()"/>
-              <!--input type="submit" value="Save" name="save"-->
-					  <!--/form-->
-
-
-
+            <!--/form-->
+              <tbody>
 )=====" };
-
+            
 
 const char CUSTOM_page_AfterFooter_BeforeScript[] PROGMEM{ R"=====(
+                      </tbody>
+                  </div>
+                </div>
+              </div>
+            </section>
             <div class="modalalc" id="modalalc">
               <div class="modalalc-header h4">
                 <div class="title">Ihre Bestellung</div>
@@ -475,8 +485,6 @@ const char CUSTOM_page_AfterFooter_BeforeScript[] PROGMEM{ R"=====(
       </footer>
       <script>
 )=====" };
-
-
 
 
 const char CUSTOM_page_AfterFooter_AfterScript[] PROGMEM{ R"=====(

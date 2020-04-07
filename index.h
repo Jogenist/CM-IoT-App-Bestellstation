@@ -134,7 +134,7 @@ const char MAIN_page_Begin[] PROGMEM{ R"=====(
 									<th style="text-align:center;">#</th>
 									<th style="text-align:center;">Cocktail</th>
 									<th style="text-align:center;">Zutaten</th>
-									<th style="text-align:center;">Gr&ouml;&szlig;e</th>
+									<th style="text-align:center;">Gr&ouml;&szlig;e</th> 
 								</tr>
 							</thead>
 							<tbody>
@@ -144,6 +144,10 @@ const char MAIN_page_Begin[] PROGMEM{ R"=====(
 const char MAIN_page_Between[] PROGMEM{ R"=====(
 							</tbody>
 						  </table>
+              <div>
+              <button id ="0001020304050607" class="btn btn-danger" data-modal-target=#modalalc>Open Modal</button>
+              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalalc">Open Modal</button>
+              </div>
 						</div>
 					</div>
 				</div>
