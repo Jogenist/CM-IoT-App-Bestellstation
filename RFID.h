@@ -21,7 +21,7 @@
 #define BESTELLUNG_STATUS  12        // The order is writing in Blockaddr 12 (0. block from sector 3)
 //#define BESTELLUNG_ERFOLG 13   // Ordersuccess is writing in Blockaddr 13 (1. block from sector 3)
 #define COCKTAILNAME 9
-#define CUSTOMCOCKTAILNAME 8 //jg0402 location 
+
 
 #define BESTELLT 0xFF
 #define BEFUELLT 0x00
@@ -105,8 +105,6 @@ public:
 	RFIDerrorcode checkIsHITglas();
 
 	RFIDerrorcode writeOrder(const char* Order, int Size);
-
-  //RFIDerrorcode writeCustomOrder(const char* Order, int Size);
 
 	RFIDerrorcode readOrder(char* Order,int size, byte& Status); //
 

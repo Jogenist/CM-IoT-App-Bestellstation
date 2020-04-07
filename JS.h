@@ -39,7 +39,7 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 
             openModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
-                    Cocktail = button.name;
+                    Cocktail = button.name; //jg0407
                     const modal = document.querySelector(
                         button.dataset.modalTarget
                     );

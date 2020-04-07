@@ -44,7 +44,6 @@ DISPLAY_SSH1106 myDisplay;
 LED myLED;
 bool isAlc=false;
 char myCocktail[32];
-char * myCustomCocktail[8]; //jg0402
 bool oderReady = false;
 uint8_t myStatus = 0;
 SemaphoreHandle_t xAnzeigeSemaphore = NULL;
@@ -157,7 +156,7 @@ String processor(const String& var)
   //Serial.println(xPortGetCoreID());
   String price_alc;
   String price_nonalc;
-  String price_custom;
+  String price_custom; //cs:0402
   File filec = SPIFFS.open("/config.json", FILE_READ);
   if (!filec) {
     Serial.println("There was an error opening the file /config.json for reading");
@@ -401,7 +400,7 @@ void setup() {
     request->send(200, "text/html", settings_html.c_str());
     });
 
-  //Answer request for custom page
+  //Answer request for custom page //jg0407
   custom_html.append(CUSTOM_page_Begin);
   custom_html.append(CUSTOM_page_AfterFooter_BeforeScript);
   custom_html.append(JAVASCRIPT_static);

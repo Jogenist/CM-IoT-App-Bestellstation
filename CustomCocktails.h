@@ -201,6 +201,16 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   var Grenadine_ml =0;
                   var Gesamtfuell_ml =0;
                   
+
+                  var Wodka_string = "000";
+                  var Zitrone_string = "000";
+                  var Maracuja_string = "000";
+                  var Banane_string = "000";
+                  var Ananas_string = "000";
+                  var Malibu_string = "000";
+                  var Orange_string = "000";
+                  var Grenadine_string = "000";
+                  
                   document.getElementById("Wodka_insert").value = Wodka_ml;
                   document.getElementById("Zitrone_insert").value = Zitrone_ml;
                   document.getElementById("Maracuja_insert").value = Maracuja_ml;
@@ -213,7 +223,6 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
                   //var x = document.getElementsByClassName("btn btn-danger")[0].name;
                   //document.getElementById("All_insert").innerHTML = x;
-
                    function ClearCustomValues()
                    {
                       Wodka_ml = 0;
@@ -225,7 +234,6 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                       Orange_ml =0;
                       Grenadine_ml =0;
                       Gesamtfuell_ml =0;
-
                   document.getElementById("Wodka_insert").value = Wodka_ml;
                   document.getElementById("Zitrone_insert").value = Zitrone_ml;
                   document.getElementById("Maracuja_insert").value = Maracuja_ml;
@@ -235,7 +243,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementById("Orange_insert").value = Orange_ml;
                   document.getElementById("Grenadine_insert").value = Grenadine_ml;
                   document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
-                  document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                  document.getElementsByClassName("btn btn-danger")[0].name = Wodka_string + Zitrone_string + Maracuja_string + Banane_string + Ananas_string + Malibu_string + Orange_string + Grenadine_string;
                   //var x = document.getElementsByClassName("btn btn-danger")[0].name;
                   //document.getElementById("All_insert").innerHTML = x;
                    }
@@ -249,66 +257,68 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         
                         if (p1 == 0)
                         {
-
                           if(Wodka_ml >= 40)
                           {
                             return 0;
                           }
                         
-                          Wodka_ml = Wodka_ml +5 ;
+                          Wodka_ml = Wodka_ml +5 ; 
+                          Wodka_string = generateString(Wodka_ml,Wodka_string);
                           document.getElementById("Wodka_insert").value = Wodka_ml;
+                          
+                          //document.getElementById("Wodka_string").innerHTML = Wodka_string; //Test
                         }
-
                         
                         if (p1 == 1)
                         {
                          Zitrone_ml = Zitrone_ml + 5;
+                         Zitrone_string = generateString(Zitrone_ml,Zitrone_string);
                          document.getElementById("Zitrone_insert").value = Zitrone_ml;
                         }
                         
                         if (p1 == 2)
                         {
                          Maracuja_ml = Maracuja_ml + 5;
+                         Maracuja_string = generateString(Maracuja_ml,Maracuja_string);
                          document.getElementById("Maracuja_insert").value = Maracuja_ml;
                         }
-
                         if (p1 == 3)
                         {
                          Banane_ml = Banane_ml + 5;
+                         Banane_string = generateString(Banane_ml,Banane_string);
                          document.getElementById("Banane_insert").value = Banane_ml;
                         }
-
                         if (p1 == 4)
                         {
                          Ananas_ml = Ananas_ml + 5;
+                         Ananas_string = generateString(Ananas_ml,Ananas_string);
                          document.getElementById("Ananas_insert").value = Ananas_ml;
                         }
-
                         if (p1 == 5)
                         {
-
                         if(Malibu_ml >= 40)
                           {
                             return 0;
                           }
                          Malibu_ml = Malibu_ml + 5;
+                         Malibu_string = generateString(Malibu_ml,Malibu_string);
                          document.getElementById("Malibu_insert").value = Malibu_ml;
                         }
-
                         if (p1 == 6)
                         {
                          Orange_ml = Orange_ml + 5;
+                         Orange_string = generateString(Orange_ml,Orange_string);
                          document.getElementById("Orange_insert").value = Orange_ml;
                         }
-
                         if (p1 == 7)
                         {
                          Grenadine_ml = Grenadine_ml + 5;
+                         Grendine_string = generateString(Grenadine_ml,Grenadine_string);
                          document.getElementById("Grenadine_insert").value = Grenadine_ml;
                         }
                         
                         document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
-                        document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                        document.getElementsByClassName("btn btn-danger")[0].name = Wodka_string + Zitrone_string + Maracuja_string + Banane_string + Ananas_string + Malibu_string + Orange_string + Grenadine_string;
                         //var x = document.getElementsByClassName("btn btn-danger")[0].name;
                         //document.getElementById("All_insert").innerHTML = x;
                   }
@@ -321,7 +331,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Wodka_ml = Wodka_ml - 5;
+                         Wodka_string = generateString(Wodka_ml,Wodka_string);
                          document.getElementById("Wodka_insert").value = Wodka_ml;
+                         //document.getElementById("Wodka_string").innerHTML = Wodka_string; //Test
                         }
                         if (p1 == 1)
                         {
@@ -330,6 +342,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Zitrone_ml = Zitrone_ml - 5;
+                         Zitrone_string = generateString(Zitrone_ml,Zitrone_string);
                          document.getElementById("Zitrone_insert").value = Zitrone_ml;
                         }
                         
@@ -340,8 +353,8 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Maracuja_ml = Maracuja_ml - 5;
+                         Maracuja_string = generateString(Maracuja_ml,Maracuja_string);
                          document.getElementById("Maracuja_insert").value = Maracuja_ml;                        }
-
                         if (p1 == 3)
                         {
                          if (Banane_ml == 0)
@@ -349,9 +362,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Banane_ml = Banane_ml - 5;
+                         Banane_string = generateString(Banane_ml,Banane_string);
                          document.getElementById("Banane_insert").value = Banane_ml;
                         }
-
                         if (p1 == 4)
                         {
                          if (Ananas_ml == 0)
@@ -359,9 +372,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Ananas_ml = Ananas_ml - 5;
+                         Ananas_string = generateString(Ananas_ml,Ananas_string);
                          document.getElementById("Ananas_insert").value = Ananas_ml;
                         }
-
                         if (p1 == 5)
                         {
                          if (Malibu_ml == 0)
@@ -369,9 +382,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Malibu_ml = Malibu_ml - 5;
+                         Malibu_string = generateString(Malibu_ml,Malibu_string);
                          document.getElementById("Malibu_insert").value = Malibu_ml;
                         }
-
                         if (p1 == 6)
                         {
                          if (Orange_ml == 0)
@@ -379,9 +392,9 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Orange_ml = Orange_ml - 5;
+                         Orange_string = generateString(Orange_ml,Orange_string);
                          document.getElementById("Orange_insert").value = Orange_ml;
                         }
-
                         if (p1 == 7)
                         {
                          if (Grenadine_ml == 0)
@@ -389,16 +402,27 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Grenadine_ml = Grenadine_ml - 5;
+                         Grendine_string = generateString(Grenadine_ml,Grenadine_string);
                          document.getElementById("Grenadine_insert").value = Grenadine_ml;
                         }
                         
                         document.getElementById("All_insert").innerHTML = Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml;
-                        document.getElementsByClassName("btn btn-danger")[0].name = String(Wodka_ml) + String(Zitrone_ml) + String(Maracuja_ml) + String(Banane_ml) + String(Ananas_ml) + String(Malibu_ml) + String(Orange_ml) + String(Grenadine_ml);
+                        document.getElementsByClassName("btn btn-danger")[0].name = Wodka_string + Zitrone_string + Maracuja_string + Banane_string + Ananas_string + Malibu_string + Orange_string + Grenadine_string;
                         //var x = document.getElementsByClassName("btn btn-danger")[0].name;
                         //document.getElementById("All_insert").innerHTML = x;
                         
                          }
-                                  
+                         
+                         function generateString(i1,i2)
+                         {
+                         if (i1 <=5)
+                          i2 = "00" + String(i1);
+                         if (i1 > 5)
+                          i2 = "0" + String(i1);
+                         if (i1 > 95)
+                          i2 = String(i1);
+                         return i2;
+                         }
                   </script>
              
               <div>
