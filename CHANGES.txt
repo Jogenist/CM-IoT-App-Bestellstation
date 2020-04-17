@@ -1,0 +1,12 @@
+1. Leertrinkbetrieb.cpp: 
+	Leertrinkbetrieb_alc += "<td style=\"text-align:center;\"><button id =\"OrderButton\" name =\""+String(Cocktails[i])+ "\" class=\"btn btn-danger btn-block\" data-modal-target=#modalalc>" + String(220) + "ml</button></td>\n"; //gejo0407
+	Name des Cocktails wird nicht in "ButtonID" sondern in "Button.name" gespeichert. Grund hierfür: CustomCocktails wird der name dynamisch beschreieben.
+
+2. Js.cpp: 
+	Zeile 42-> Cocktail = button.name; 
+
+3. Index.h/Index.cpp:
+	Änderungen gemäß 1.
+
+4. Betsellen.ino:
+	Sachen für CustomPage eingebaut

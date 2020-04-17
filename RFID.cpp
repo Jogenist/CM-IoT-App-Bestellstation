@@ -13,7 +13,7 @@ const char Success[] = " ORDER  OKAY! ";
 // Cocktails definition
 
 const char* Cocktails[] = { "Wodka-Maracuja","Malibu-Maracuja","Malibu-Orange","Malibu-Sunrise","Screwdriver", // Alc cocktails
-"Tropic-Thunder","Mix-Mimi","Pink-Pussycat","Mix-Safari","San-Francisco","The-Waikiki","Mix-Brassmonkey",  // Alc cocktails
+"Tropic-Thunder","Mix-Mimi","Pink-Pussycat","Mix-Safari","San-Francisco","The-Waikiki","Mix-Brassmonkey", // Alc cocktails
 "Maracuja","Orange","Taifruitpunch","Tropic-Sunrise","Lemon-Cocktail","Mix-Sixteen",   // non alc cocktails
 "Mix-Redone","Mix-Planterswonder","Mix-Targa","Bananajack","Bora-Bora","Drachenblut","Mix-Kiba","Luckydriver","Ananas-Orange", // non alc cocktails
 "Babouin","Ballerina","Cinderella","Mix-Sweetvictory","Mix-Sweety","Tropic-Star","Tropical-Orange" }; // non alc cocktails
@@ -127,6 +127,8 @@ RFIDerrorcode RFID_Card::writeOrder(const char* Order, int Size)
 #endif  // DEBUG_RFID
 	return RFID_OK;
 }
+
+
 
 RFIDerrorcode RFID_Card::readOrder(char* Cocktail, int size, byte& Status)
 {

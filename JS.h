@@ -39,7 +39,7 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 
             openModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
-                    Cocktail = button.name; //jg0407
+                    Cocktail = button.name; //scch -> weil custom die Drinks in ml dynamisch gespeichert werdne müssen
                     const modal = document.querySelector(
                         button.dataset.modalTarget
                     );
@@ -49,6 +49,14 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 
             overlay.addEventListener("click", () => {
                 const modals = document.querySelectorAll(".modalalc.active");
+                modals.forEach(modal => {
+                    closeModal(modal);
+                });
+            });
+
+            overlay.addEventListener("click", () => {
+                //cs20200320-APP
+                const modals = document.querySelectorAll(".modalcust.active");
                 modals.forEach(modal => {
                     closeModal(modal);
                 });
@@ -70,6 +78,14 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
 
             closeModalButtons.forEach(button => {
                 button.addEventListener("click", () => {
+                    //cs20200320-APP
+                    const modal = button.closest(".modalcust");
+                    closeModal(modal);
+                });
+            })
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener("click", () => {
                     const modal = button.closest(".modalnonalc");
                     closeModal(modal);
                 });
@@ -81,7 +97,8 @@ const char JAVASCRIPT_static[] PROGMEM{ R"=====(
                 overlay.classList.remove("active");
             }
 
-            function openModal(modal) {
+            function openModal(modal) 
+            {
                 if (modal == null) return;
 
                 console.log(modal.className);
