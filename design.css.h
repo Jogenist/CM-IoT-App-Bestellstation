@@ -17,15 +17,16 @@ body {
 {
 	height: 70px;
 	width: auto;
-	background-color: white;
-	box-shadow: 10px 10px 15px silver;
+	background-color: #990b24;
+	//box-shadow: 10px 10px 15px silver;
 	border-radius: 10px;
 }
 
 .nav {
   height: 50px;
   width: 100%;
-  background-color: red;
+  color: #fff;
+  background-color: #990b24;
   position: fixed;
 z-index: 5;
 }
@@ -113,13 +114,13 @@ z-index: 5;
 }
 
 nav{
-    background-color: red;
+    background-color: #990b24;
     color:white;
 }
 
 header {
     padding: 90px 0 0px;
-    background-color: red;
+    background-color: #990b24;
 }
 
 section {
@@ -135,7 +136,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
+    background-color: #990b24;
     color: white;
     
 }
@@ -163,7 +164,8 @@ footer {
     box-sizing: border-box;
 }
 
-.modalalc, .modalnonalc {
+/*cs20200320-APP -> '.modalcust' added*/
+.modalalc, .modalnonalc, .modalcust {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -177,11 +179,13 @@ footer {
     max-width: 80%;
 }
 
-.modalalc.active,  .modalnonalc.active{
+/*cs20200320-APP -> '.modalcust' added*/
+.modalalc.active, .modalnonalc.active,  .modalcust{
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modalalc-header, .modalnonalc-header {
+/*cs20200320-APP -> '.modalcust' added*/
+.modalalc-header, .modalnonalc-header,  .modalcust {
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -189,13 +193,14 @@ footer {
     border-bottom: 1px solid black;
 }
 
-.modalalc-header .title, .modalnonalc-header .title {
+/*cs20200320-APP -> '.modalcust-header .title' added*/
+.modalalc-header .title, .modalnonalc-header .title,  .modalcust-header .title {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-
-.modalalc-header .close-button,  .modalnonalc-header .close-button{
+ /*cs20200320-APP -> '.modalcust-header .close-button' added*/
+.modalalc-header .close-button,  .modalnonalc-header .close-button, .modalcust-header .close-button{
     cursor: pointer;
     border: none;
     outline: none;
@@ -204,7 +209,8 @@ footer {
     font-weight: bold;
 }
 
-.modalalc-body, .modalnonalc-body {
+ /*cs20200320-APP -> '.modalcust-body' added*/
+.modalalc-body, .modalnonalc-body, .modalcust-body {
     padding: 10px 15px;
 }
 
@@ -279,7 +285,7 @@ footer {
 input[type="number"]
 {
     font-size:24px;
-    color: red;
+    color: #990b24;
     margin-right: 10px;
     width:80%;
     padding-bottom: 10px;

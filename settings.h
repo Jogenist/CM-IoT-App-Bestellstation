@@ -105,9 +105,6 @@ const char SETTINGS_page_Begin[] PROGMEM{ R"=====(
 							Preis alkoholisch<br>
 							<input type="text" name="price_alc" value="5">
 							<br>
-              Preis custom<br>
-              <input type="text" name="price_custom" value="30">
-              <br>
 							Preis nicht alkoholisch<br>
 							<input type="text" name="price_nonalc" value="4">
 							<br><br>
