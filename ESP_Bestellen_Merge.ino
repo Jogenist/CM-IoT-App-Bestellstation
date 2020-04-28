@@ -30,8 +30,8 @@ using namespace std;
 /* rofa */
 #include "functions.h"
 
-const char* assid = "WLAN-319777";
-const char* apassword = "1266581452675918";
+const char* assid = "Xperia";
+const char* apassword = "133713371337";
 
 const char* cssid = "";
 const char* cpassword = "";
