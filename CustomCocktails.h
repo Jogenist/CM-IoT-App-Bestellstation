@@ -167,6 +167,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   Gesamtfüllmenge (220ml) = <p id="All_insert"></p>
                   
                   <script>
+                  //Variables
                   var Grenadine_ml =0;
                   var Zitrone_ml = 0;
                   var Wodka_ml = 0;
@@ -198,9 +199,8 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementById("Ananas_insert").value = Ananas_ml;                                                    
                   document.getElementById("All_insert").innerHTML = Grenadine_ml + Zitrone_ml + Wodka_ml + Orange_ml + Maracuja_ml + Malibu_ml + Banane_ml + Ananas_ml;
                   document.getElementsByClassName("btn btn-danger")[0].name = String(Grenadine_ml) + String(Zitrone_ml) + String(Wodka_ml) + String(Orange_ml) + String(Maracuja_ml) + String(Malibu_ml) + String(Banane_ml) + String(Ananas_ml);
-                  //var x = document.getElementsByClassName("btn btn-danger")[0].name;
-                  //document.getElementById("All_insert").innerHTML = x;
-                   function ClearCustomValues()
+
+                   function ClearCustomValues() //set all ingredients to zero
                    {
                       Grenadine_ml =0;
                       Zitrone_ml = 0;
@@ -225,7 +225,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   //document.getElementById("All_insert").innerHTML = x;
                    }
                   
-                  function myFunctionInc(p1) 
+                  function myFunctionInc(p1) //increase ingredient p1
                   {
                       if (Wodka_ml + Zitrone_ml + Maracuja_ml + Banane_ml + Ananas_ml + Malibu_ml + Orange_ml+ Grenadine_ml == 220)
                         {
@@ -251,7 +251,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         if (p1 == 2)
                         {
 
-                          if(Wodka_ml >= 40)
+                          if(Wodka_ml >= 40)        //Wodka max limit 40ml
                           {
                             return 0;
                           }
@@ -278,7 +278,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         }                                                 
                         if (p1 == 5)
                         {
-                        if(Malibu_ml >= 40)
+                        if(Malibu_ml >= 40) //Malibu max limit 40ml
                           {
                             return 0;
                           }
@@ -305,7 +305,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         //document.getElementById("All_insert").innerHTML = x;
                   }
                   
-                  function myFunctionDec(p1) {
+                  function myFunctionDec(p1) { //decrease ingredient p1
                       if (p1 == 0)
                         {
                           
@@ -409,7 +409,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         
                          }
                          
-                         function generateString(i1,i2)
+                         function generateString(i1,i2) //generate String for button name
                          {
                          if (i1 <=5)
                           i2 = "00" + String(i1);
@@ -419,12 +419,59 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           i2 = String(i1);
                          return i2;
                          }
+                        //----------------------------------------------------------------------------------
+                        //WEB-NFC (not working for now) https://whatwebcando.today/nfc.html
+                        async function readTag() {
+                          if ("NDEFReader" in window) {
+                            const reader = new NDEFReader();
+                            try {
+                              await reader.scan();
+                              reader.onreading = event => {
+                                const decoder = new TextDecoder();
+                                for (const record of event.message.records) {
+                                  consoleLog("Record type:  " + record.recordType);
+                                  consoleLog("MIME type:    " + record.mediaType);
+                                  consoleLog("=== data ===\n" + decoder.decode(record.data));
+                                }
+                              }
+                            } catch(error) {
+                              consoleLog(error);
+                            }
+                          } else {
+                            consoleLog("Web NFC is not supported.");
+                          }
+                        }
+                        
+                        async function writeTag() {
+                          if ("NDEFWriter" in window) {
+                            const writer = new NDEFWriter();
+                            try {
+                              await writer.write("What Web Can Do Today");
+                              consoleLog("NDEF message written!");
+                            } catch(error) {
+                              consoleLog(error);
+                            }
+                          } else {
+                            consoleLog("Web NFC is not supported.");
+                          }
+                        }
+                        
+                        function consoleLog(data) {
+                          var logElement = document.getElementById('log');
+                          logElement.innerHTML += data + '\n';
+                        }
+                        //end WEB-NFC
+                        //----------------------------------------------------------------------------------
                   </script>
-             
+              <p>
+              <button onclick="readTag()">Test NFC Read</button>      //NFC HTML Button READ
+              <button onclick="writeTag()">Test NFC Write</button>    //NFC HTML Button WRITE
+              </p>
+              <pre id="log"></pre>
               <div>
-              <button name = "000000000000000000000000" id ="OrderButton" class="btn btn-danger" data-modal-target=#modalalc>Order</button>
+              <button name = "000000000000000000000000" id ="OrderButton" onclick="ClearCustomValues()" class="btn btn-danger" data-modal-target=#modalalc>Order</button> //Order Button
               </div>
-              <input type="button" name="ButtonClear" value="SAUWA" onclick="ClearCustomValues()"/>
+              <input type="button" name="ButtonClear" value="Clear" onclick="ClearCustomValues()"/> //Clear Button
             <!--/form-->
               <tbody>
 )=====" };
