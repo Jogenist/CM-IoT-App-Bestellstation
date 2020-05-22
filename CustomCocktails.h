@@ -198,7 +198,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                   document.getElementById("Banane_insert").value = Banane_ml;
                   document.getElementById("Ananas_insert").value = Ananas_ml;                                                    
                   document.getElementById("All_insert").innerHTML = Grenadine_ml + Zitrone_ml + Wodka_ml + Orange_ml + Maracuja_ml + Malibu_ml + Banane_ml + Ananas_ml;
-                  document.getElementsByClassName("btn btn-danger")[0].name = String(Grenadine_ml) + String(Zitrone_ml) + String(Wodka_ml) + String(Orange_ml) + String(Maracuja_ml) + String(Malibu_ml) + String(Banane_ml) + String(Ananas_ml);
+                  document.getElementsByClassName("btn btn-danger")[0].name = Grenadine_string + Zitrone_string + Wodka_string + Orange_string + Maracuja_string + Malibu_string + Banane_string + Ananas_string;
 
                    function ClearCustomValues() //set all ingredients to zero
                    {
@@ -211,6 +211,16 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                       Banane_ml = 0;
                       Ananas_ml=0;
                       Gesamtfuell_ml =0;
+
+                      //Grenadine_string = "000";
+                      //Zitrone_string = "000";
+                      //Wodka_string = "000";
+                      //Orange_string = "000";
+                      //Maracuja_string = "000";
+                      //Malibu_string = "000";
+                      //Banane_string = "000";
+                      //Ananas_string = "000";
+                  
                   document.getElementById("Wodka_insert").value = Wodka_ml;
                   document.getElementById("Zitrone_insert").value = Zitrone_ml;
                   document.getElementById("Maracuja_insert").value = Maracuja_ml;
@@ -236,7 +246,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                         {
 
                           Grenadine_ml = Grenadine_ml + 5;
-                          Grendine_string = generateString(Grenadine_ml,Grenadine_string);
+                          Grenadine_string = generateString(Grenadine_ml,Grenadine_string);
                           document.getElementById("Grenadine_insert").value = Grenadine_ml;
                                                   
                         }
@@ -314,7 +324,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
                           return 0;
                         }
                          Grenadine_ml = Grenadine_ml - 5;
-                         Grendine_string = generateString(Grenadine_ml,Grenadine_string);
+                         Grenadine_string = generateString(Grenadine_ml,Grenadine_string);
                          document.getElementById("Grenadine_insert").value = Grenadine_ml;
                         }
                         
@@ -469,7 +479,7 @@ const char CUSTOM_page_Begin[] PROGMEM{ R"=====(
               </p>
               <pre id="log"></pre>
               <div>
-              <button name = "000000000000000000000000" id ="OrderButton" onclick="ClearCustomValues()" class="btn btn-danger" data-modal-target=#modalalc>Order</button> //Order Button
+              <button name = "000000000000000000000000" id ="OrderButton" onclick="ClearCustomValues();history.go(0);" class="btn btn-danger" data-modal-target=#modalalc>Order</button> //Order Button
               </div>
               <input type="button" name="ButtonClear" value="Clear" onclick="ClearCustomValues()"/> //Clear Button
             <!--/form-->
